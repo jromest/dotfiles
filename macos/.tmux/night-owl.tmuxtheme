@@ -1,0 +1,85 @@
+# Night Owl Theme Tmux
+# Based on https://github.com/sdras/night-owl-vscode-theme
+
+# Status Line
+set -g status "on"
+set -g status-justify "left"
+set -g status-interval 2
+
+set -g status-left-style "none"
+set -g status-right-style "none"
+
+set -g status-left-length "100"
+set -g status-right-length "100"
+
+set -g status-style "none,bg=#112630"
+
+# Pane
+set -g pane-active-border-style "fg=#c792ea"
+set -g pane-border-style "fg=#44596b"
+
+# Messages
+set -g message-style "fg=#011627,bg=#ffcb8b"
+set -g message-command-style "fg=#011627,bg=#ffcb8b"
+
+# Clock Mode
+setw -g clock-mode-colour "#ffcb8b"
+setw -g clock-mode-style "12"
+
+# Window List
+setw -g mode-style "fg=#011627 bg=#ffcb8b"
+
+# Session Name (left)
+set -g status-left "#[fg=#011627,bg=#82aaff]"
+set -ga status-left "#{?window_zoomed_flag,#[bg=#c792ea],}"
+set -ga status-left "#{?client_prefix,#[bg=#c5e478],} #{session_name} "
+
+set -ga status-left "#[fg=#82aaff,bg=#112630,nobold,nounderscore,noitalics]"
+set -ga status-left "#{?window_zoomed_flag,#[fg=#c792ea],}"
+set -ga status-left "#{?client_prefix,#[fg=#c5e478],}"
+
+# CPU RAM Load (right)
+set -g status-right "#[fg=#637777]#($TMUX_PLUGIN_MANAGER_PATH/tmux-mem-cpu-load/tmux-mem-cpu-load --mem-mode 2 --graph-lines 5 --averages-count 1 --interval 2)#[default] "
+
+# Battery (right)
+set -g @batt_color_charge_primary_tier8 '#ffffff'
+set -g @batt_color_charge_primary_tier7 '#ffffff'
+set -g @batt_color_charge_primary_tier6 '#ffffff'
+set -g @batt_color_charge_primary_tier5 '#ffffff'
+set -g @batt_color_charge_primary_tier4 '#ffffff'
+set -g @batt_color_charge_primary_tier3 '#ff8000'
+set -g @batt_color_charge_primary_tier2 '#ff4000'
+set -g @batt_color_charge_primary_tier1 '#ff0000'
+
+set -ga status-right "#[fg=#637777]"
+set -ga status-right "#{battery_color_charge_fg}#[bg=#112630] #{battery_icon} #{battery_percentage} "
+
+# Time (right)
+set -ga status-right "#[fg=#c792ea,bg=#112630,nobold,nounderscore,noitalics]"
+set -ga status-right "#[fg=#011627,bg=#c792ea] %I:%M %p "
+set -ga status-right "#[fg=#112630,bg=#c792ea,nobold,nounderscore,noitalics]"
+
+# Date (right)
+set -ga status-right "#[fg=#82aaff,bg=#112630,nobold,nounderscore,noitalics]"
+set -ga status-right "#[fg=#011627,bg=#82aaff] %a %b %d "
+
+# Window Status Line
+setw -g window-status-separator ""
+setw -g window-status-activity-style "fg=#011627,bg=#ffcb8b"
+setw -g window-status-style "none,fg=#011627,bg=#637777"
+
+# Window List
+setw -g window-status-format "#[fg=#112630,bg=#637777,nobold,nounderscore,noitalics]"
+setw -ga window-status-format "#{?window_activity_flag,#[bg=#ffcb8b],}"
+setw -ga window-status-format "#{?window_bell_flag,#[bg=#ffcb8b],}"
+
+setw -ga window-status-format "#{?window_activity_flag,#[bg=#ffcb8b],#[bg=#637777]}#[fg=#011627] #I #W "
+
+setw -ga window-status-format "#[bg=#112630,fg=#637777,nobold,nounderscore,noitalics]"
+setw -ga window-status-format "#{?window_activity_flag,#[fg=#ffcb8b],}"
+setw -ga window-status-format "#{?window_bell_flag,#[fg=#ffcb8b],}"
+
+# Current Window List
+setw -g window-status-current-format "#[fg=#112630,bg=#c792ea,nobold,nounderscore,noitalics]"
+setw -ga window-status-current-format "#[fg=#011627,bg=#c792ea] #I #W "
+setw -ga window-status-current-format "#[fg=#c792ea,bg=#112630,nobold,nounderscore,noitalics]"

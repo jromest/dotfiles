@@ -1,0 +1,7 @@
+[user]
+  email = 
+  name = 
+[core]
+  editor = vim
+[commit]
+  gpgsign = true

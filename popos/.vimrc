@@ -117,6 +117,9 @@ nnoremap <leader>bq :bp <BAR> bd #<CR>
 " <leader> + w to save/write
 nnoremap <leader>w :w<CR>
 
+nnoremap <leader>h ^
+nnoremap <leader>l $
+
 " VIM CLOSETAG
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.js'
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'

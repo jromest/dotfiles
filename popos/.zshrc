@@ -35,6 +35,8 @@ zplug load
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
+setopt inc_append_history # write to the history file immediately, not when the shell exits
+setopt hist_ignore_space # don't record an event starting with a space
 
 #  auto/tab complete
 autoload -U compinit
@@ -63,19 +65,12 @@ alias -g ....='cd ../../..'
 alias -g .....='cd ../../../..'
 alias -g ......='cd ../../../../..'
 
-# remap keys
-# remap Caps Lock to Esc and Esc to Grave Tilde
-alias remap="xmodmap -e 'clear Lock' \
-  -e 'keycode 9 = grave asciitilde grave asciitilde' \
-  -e 'keycode 66 = Escape NoSymbol Escape'"
-
 # FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm
+# BAT
+alias bat=batcat
 
 # NNN
 # cd on quit
@@ -97,6 +92,7 @@ n ()
     fi
 }
 
-# trash-cli
-export PATH=~/.local/bin:"$PATH"
-
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

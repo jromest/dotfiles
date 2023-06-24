@@ -35,9 +35,6 @@ set -ga status-left "#{?window_zoomed_flag,#[bg=#c792ea],}"
 set -ga status-left "#{?client_prefix,#[bg=#c5e478],} #{session_name} "
 set -ga status-left "#[bg=#112630] "
 
-# CPU (right)
-set -g status-right "#[bg=#112630] CPU: #{cpu_percentage} | RAM: #{ram_percentage} | TEMP: #{cpu_temp} |"
-
 # Battery (right)
 set -g @batt_color_charge_primary_tier8 '#ffffff'
 set -g @batt_color_charge_primary_tier7 '#ffffff'
@@ -47,7 +44,7 @@ set -g @batt_color_charge_primary_tier4 '#ffffff'
 set -g @batt_color_charge_primary_tier3 '#ff8000'
 set -g @batt_color_charge_primary_tier2 '#ff4000'
 set -g @batt_color_charge_primary_tier1 '#ff0000'
-set -ga status-right "#{battery_color_charge_fg}#[bg=#112630] #{battery_icon} #{battery_percentage} "
+set -g status-right "#{battery_color_charge_fg}#[bg=#112630] #{battery_icon} #{battery_percentage} "
 
 # Time (right)
 set -ga status-right "#[fg=#011627,bg=#c792ea] %I:%M %p "

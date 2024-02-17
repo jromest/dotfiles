@@ -37,12 +37,15 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt inc_append_history # write to the history file immediately, not when the shell exits
 setopt hist_ignore_space # don't record an event starting with a space
+setopt hist_expire_dups_first  # expire a duplicate event first when trimming history
+setopt hist_ignore_dups # don't record an event that was just recorded again
+setopt hist_save_no_dups # do not write a duplicate event to the history file
+setopt hist_ignore_all_dups # delete an old recorded event if a new event is a duplicate
 
-#  auto/tab complete
-autoload -U compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit
+# auto/tab complete
+zmodload zsh/complist # should be called before compinit
+zstyle ':completion:*' menu select # allow to select in the menu
+autoload -U compinit; compinit
 _comp_options+=(globdots) # Include hidden files
 
 # KEYBINDINGS
@@ -73,6 +76,9 @@ source /usr/share/doc/fzf/examples/completion.zsh
 alias bat=batcat
 
 # NNN
+# onedark theme
+BLK="04" CHR="04" DIR="04" EXE="00" REG="00" HARDLINK="00" SYMLINK="06" MISSING="00" ORPHAN="01" FIFO="0F" SOCK="0F" OTHER="02"
+export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
 # cd on quit
 # https://github.com/jarun/nnn/wiki/Basic-use-cases#configure-cd-on-quit
 n ()

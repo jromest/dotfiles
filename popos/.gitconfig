@@ -2,4 +2,4 @@
   email = 
   name = 
 [core]
-  editor = vim
+  editor = nvim
